@@ -33,7 +33,16 @@ public class FahrzeugSimulation {
 		System.out.println(p1);
 		System.out.println(p2);
 		System.out.println(poa1);
-
+		System.out
+				.println("-----------------------------------------------------------------------------------------------");
+		l1.stoppen();
+		p1.stoppen();
+		p2.stoppen();
+		poa1.stoppen();
+		System.out.println(l1);
+		System.out.println(p1);
+		System.out.println(p2);
+		System.out.println(poa1);
 	}
 
 }
