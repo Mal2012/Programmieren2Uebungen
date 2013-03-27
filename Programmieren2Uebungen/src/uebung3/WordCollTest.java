@@ -15,6 +15,7 @@ public class WordCollTest {
 		System.out.println(wColl.count("Mann"));
 		System.out.println(wColl);
 		wColl.append("Mann", "Test");
+		System.out.println(wColl);
 		System.out.println(wColl.top());
 	}
 }
