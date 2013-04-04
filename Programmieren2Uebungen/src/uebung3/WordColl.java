@@ -69,12 +69,14 @@ public class WordColl {
 		StringBuffer sb = new StringBuffer();
 		int total = 0;
 		for (Object s : v) {
-			if (s.toString().length() >= 8) {
-				sb.append(s + "			| " + count(s) + " \n");
-			} else {
-				sb.append(s + "				| " + count(s) + " \n");
+			if (sb.indexOf(s.toString()) <= 0) {
+				if (s.toString().length() >= 8) {
+					sb.append(s + "			| " + count(s) + " \n");
+				} else {
+					sb.append(s + "				| " + count(s) + " \n");
+				}
+				total += count(s);
 			}
-			total += count(s);
 		}
 		return "Word				| count\n"
 				+ "------------------------------------------------\n"

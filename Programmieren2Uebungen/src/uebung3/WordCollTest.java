@@ -7,8 +7,7 @@ public class WordCollTest {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String[] chapter = { "Thomas Mann , der jüngere",
-				"Bruder von Heinrich Mann" };
+		String[] chapter = { "Thomas Mann , der jüngere Bruder von Heinrich Mann (1871–1950)" };
 
 		WordColl wColl = new WordColl(chapter);
 		System.out.println(wColl.size()); // liefert 9.
