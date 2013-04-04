@@ -4,7 +4,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 public class WordColl {
-	Vector<String> v = new Vector<String>();
+	Vector<Object> v = new Vector<Object>();
 
 	public WordColl(String... chapter) {
 		// TODO Auto-generated constructor stub
@@ -14,7 +14,8 @@ public class WordColl {
 			StringTokenizer st = new StringTokenizer(s);
 			while (st.hasMoreTokens()) {
 				String ss = st.nextToken();
-				this.v.add(ss);
+
+				this.v.add(new Word(ss));
 			}
 		}
 
@@ -25,11 +26,11 @@ public class WordColl {
 		return this.v.size();
 	}
 
-	public int count(String string) {
+	public int count(Object s2) {
 		// TODO Auto-generated method stub
 		int result = 0;
-		for (String s : v) {
-			if (s.equals(string)) {
+		for (Object s : v) {
+			if (s.toString().equals(s2.toString())) {
 				result += 1;
 			}
 		}
@@ -41,10 +42,10 @@ public class WordColl {
 		// TODO Auto-generated method stub
 		int c = 0;
 		String res = null;
-		for (String s : this.v) {
+		for (Object s : this.v) {
 			if (count(s) > c) {
 				c = count(s);
-				res = s;
+				res = s.toString();
 			}
 		}
 		return res;
@@ -67,8 +68,8 @@ public class WordColl {
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		int total = 0;
-		for (String s : v) {
-			if (s.length() >= 8) {
+		for (Object s : v) {
+			if (s.toString().length() >= 8) {
 				sb.append(s + "			| " + count(s) + " \n");
 			} else {
 				sb.append(s + "				| " + count(s) + " \n");

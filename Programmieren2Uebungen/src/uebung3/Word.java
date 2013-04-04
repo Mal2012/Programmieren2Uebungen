@@ -8,4 +8,10 @@ public class Word {
 		this.wort = w;
 	}
 
+	@Override
+	public String toString() {
+		return wort;
+
+	}
+
 }

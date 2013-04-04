@@ -12,7 +12,7 @@ public class WordCollTest {
 
 		WordColl wColl = new WordColl(chapter);
 		System.out.println(wColl.size()); // liefert 9.
-		System.out.println(wColl.count("Mann"));
+		System.out.println(wColl.count("Mann")); // liefert 2
 		System.out.println(wColl);
 		wColl.append("Mann", "Test");
 		System.out.println(wColl);
