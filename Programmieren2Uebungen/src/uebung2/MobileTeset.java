@@ -5,7 +5,7 @@ public class MobileTeset {
 		final Star a = new Star(2);
 		final GlitterStar b = new GlitterStar(4);
 		final Star c = new Star(9);
-		final Wire ab = new Wire(a, b, 7.2);
+		final Wire ab = new Wire(a, b, 9);
 		final Wire abc = new Wire(ab, c, 10);
 
 		abc.balance();
