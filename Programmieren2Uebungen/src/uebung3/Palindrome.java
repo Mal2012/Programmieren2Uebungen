@@ -11,11 +11,17 @@ public class Palindrome {
 
 		for (int i = 0; i < chr.length; i++) {
 			if (i < chr.length / 2) {
-				stack.add(chr[i]);
+				if (chr[i] != ' ') {
+					stack.add(chr[i]);
+				}
 			} else {
-				if (stack.peek().equals(chr[i])) {
-					stack.pop();
-					result = true;
+				if (!stack.isEmpty()) {
+					if (stack.peek().equals(chr[i])) {
+						stack.pop();
+						result = true;
+					}
+				} else {
+					result = false;
 				}
 			}
 
