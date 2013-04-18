@@ -13,6 +13,8 @@ public class PalindromeTest {
 		Palindrome p = new Palindrome();
 		Scanner sc = new Scanner(System.in);
 		String s = sc.next();
+
 		System.out.println(p.testPalindrome(s));
+
 	}
 }
