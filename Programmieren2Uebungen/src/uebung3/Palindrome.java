@@ -7,7 +7,7 @@ public class Palindrome {
 	public boolean testPalindrome(String s) {
 		boolean result = false;
 		Stack<Character> stack = new Stack<Character>();
-		char[] chr = s.toCharArray();
+		char[] chr = s.replaceAll(" ", "").toCharArray();
 
 		for (int i = 0; i < chr.length; i++) {
 			if (i < chr.length / 2) {

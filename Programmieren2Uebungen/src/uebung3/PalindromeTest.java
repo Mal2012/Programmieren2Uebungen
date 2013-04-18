@@ -12,7 +12,7 @@ public class PalindromeTest {
 
 		Palindrome p = new Palindrome();
 		Scanner sc = new Scanner(System.in);
-		String s = sc.next();
+		String s = sc.nextLine();
 
 		System.out.println(p.testPalindrome(s));
 
