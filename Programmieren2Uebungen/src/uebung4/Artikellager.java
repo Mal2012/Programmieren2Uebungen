@@ -2,22 +2,24 @@ package uebung4;
 
 import java.util.Arrays;
 
-public class Artikellager<E> {
+public class Artikellager<E extends Artikel> {
 	Ort<E>[] orte;
 
+	@SuppressWarnings("unchecked")
 	public Artikellager(int anzahlOrte) {
 		this.orte = new Ort[anzahlOrte];
 		for (int i = 0; i < anzahlOrte; i++) {
-			orte[i] = new Ort(i);
+			orte[i] = new Ort<E>(i);
 		}
 	}
 
 	public E auslagern(String artikelnummer) {
-		for (Ort o : orte) {
+		for (Ort<E> o : orte) {
 			if (o.istBelegt()) {
-				Artikel element = (Artikel) o.getEingelagertesElement();
-				if (element.artikelNummer().equals(artikelnummer)) {
-					return (E) o.entnehmen();
+
+				if (((Artikel) o.getEingelagertesElement()).artikelNummer()
+						.equals(artikelnummer)) {
+					return o.entnehmen();
 				}
 			}
 		}
@@ -25,7 +27,7 @@ public class Artikellager<E> {
 	}
 
 	public boolean einlagern(E e) {
-		for (Ort o : orte) {
+		for (Ort<E> o : orte) {
 			if (!o.istBelegt()) {
 				o.hinzufuegen(e);
 				return true;
@@ -37,10 +39,10 @@ public class Artikellager<E> {
 
 	public int bestandSuchen(String artikelnummer) {
 		int result = 0;
-		for (Ort o : orte) {
+		for (Ort<E> o : orte) {
 			if (o.istBelegt()) {
-				Artikel element = (Artikel) o.getEingelagertesElement();
-				if (element.artikelNummer().equals(artikelnummer)) {
+				if (o.getEingelagertesElement().artikelNummer()
+						.equals(artikelnummer)) {
 					result++;
 				}
 			}
