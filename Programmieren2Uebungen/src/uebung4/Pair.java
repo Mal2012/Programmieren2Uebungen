@@ -27,7 +27,7 @@ public class Pair<E, K> {
 
 	@Override
 	public String toString() {
-		return "Pair [e=" + e + ", k=" + k + "]";
+		return "(" + e + "," + k + ")";
 	}
 
 	@Override
@@ -50,5 +50,15 @@ public class Pair<E, K> {
 		if (x == null)
 			return y == null;
 		return x.equals(y);
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 17;
+		if (e != null)
+			hash = 23 * hash + e.hashCode();
+		if (k != null)
+			hash = 23 * hash + k.hashCode();
+		return hash;
 	}
 }
