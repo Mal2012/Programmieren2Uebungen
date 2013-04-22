@@ -36,12 +36,12 @@ public class Pair<E, K> {
 			return false;
 		if (getClass() != o.getClass())
 			return false;
-		if (!super.equals(o))
-			return false;
 		final Pair other = (Pair) o;
 		if (!helpEquals(e, other.getE()))
 			return false;
 		if (!helpEquals(k, other.getK()))
+			return false;
+		if (!super.equals(o))
 			return false;
 		return true;
 	}
