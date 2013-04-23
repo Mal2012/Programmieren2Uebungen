@@ -17,8 +17,8 @@ public class Artikellager<E extends Artikel> {
 		for (Ort<E> o : orte) {
 			if (o.istBelegt()) {
 
-				if (((Artikel) o.getEingelagertesElement()).artikelNummer()
-						.equals(artikelnummer)) {
+				if ((o.getEingelagertesElement()).artikelNummer().equals(
+						artikelnummer)) {
 					return o.entnehmen();
 				}
 			}
