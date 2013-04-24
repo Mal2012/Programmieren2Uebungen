@@ -9,14 +9,13 @@ public class Artikellager<E extends Artikel> {
 	public Artikellager(int anzahlOrte) {
 		this.orte = new Ort[anzahlOrte];
 		for (int i = 0; i < anzahlOrte; i++) {
-			orte[i] = new Ort<E>(i);
+			this.orte[i] = new Ort<E>(i);
 		}
 	}
 
 	public E auslagern(String artikelnummer) {
 		for (Ort<E> o : orte) {
 			if (o.istBelegt()) {
-
 				if ((o.getEingelagertesElement()).artikelNummer().equals(
 						artikelnummer)) {
 					return o.entnehmen();
@@ -34,7 +33,6 @@ public class Artikellager<E extends Artikel> {
 			}
 		}
 		return false;
-
 	}
 
 	public int bestandSuchen(String artikelnummer) {
