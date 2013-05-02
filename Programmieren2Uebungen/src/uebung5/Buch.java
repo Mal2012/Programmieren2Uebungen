@@ -1,49 +1,38 @@
 package uebung5;
 
-public class Buch implements Comparable {
-	protected String autor, isbn, titel;
+public class Buch implements Comparable<Buch> {
 
-	public Buch(String autor, String isbn, String titel) {
+	protected final String isbn, autor, titel;
+
+	public Buch(String isbn, String autor, String titel) {
 		super();
-		this.autor = autor;
 		this.isbn = isbn;
+		this.autor = autor;
 		this.titel = titel;
 	}
 
 	@Override
-	public String toString() {
-		return "Buch [autor=" + autor + ", isbn=" + isbn + ", titel=" + titel
-				+ "]";
-	}
-
-	public String getAutor() {
-		return autor;
-	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public int compareTo(Buch b) {
+		return this.isbn.compareTo(b.isbn);
 	}
 
 	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+	public String getAutor() {
+		return autor;
 	}
 
 	public String getTitel() {
 		return titel;
 	}
 
-	public void setTitel(String titel) {
-		this.titel = titel;
-	}
-
 	@Override
-	public int compareTo(Object arg0) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String toString() {
+		return "\n" + String.format("%-22s", autor) + " "
+				+ String.format("\"%-15s\"", titel) + " "
+				+ String.format("%13s", isbn);
 	}
 
 }
