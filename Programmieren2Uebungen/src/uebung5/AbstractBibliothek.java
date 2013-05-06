@@ -69,4 +69,8 @@ public abstract class AbstractBibliothek {
 		return "" + buecher.toString();
 	}
 
+	public Collection<Buch> getBuecher() {
+		return buecher;
+	}
+
 }
