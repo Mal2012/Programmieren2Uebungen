@@ -27,6 +27,7 @@ public class Schachbrett extends JFrame {
 		this.setResizable(false);
 		this.setVisible(true);
 		int count = 1;
+
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				c.add(new SchachbrettZelle(j + i, count));

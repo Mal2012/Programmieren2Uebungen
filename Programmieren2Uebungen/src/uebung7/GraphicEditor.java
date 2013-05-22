@@ -5,6 +5,9 @@ import java.awt.Container;
 import javax.swing.JFrame;
 
 public class GraphicEditor {
+	static ColorPanel col = new ColorPanel();
+	static FormPanel create = new FormPanel();
+	static CreatePanel editor = new CreatePanel(col, create);
 
 	public static void main(String[] args) {
 		JFrame wnd = new JFrame("GraphicEditor");
@@ -16,13 +19,10 @@ public class GraphicEditor {
 		Container c = wnd.getContentPane();
 		c.setLayout(null);
 
-		ColorPanel col = new ColorPanel();
-
 		col.setBounds(0, 0, 500, 55);
-		FormPanel create = new FormPanel();
+
 		create.setBounds(0, 55, 55, 450);
 
-		CreatePanel editor = new CreatePanel(col, create);
 		editor.setBounds(60, 55, 700, 500);
 
 		c.add(create);
@@ -31,4 +31,5 @@ public class GraphicEditor {
 
 		wnd.setVisible(true);
 	}
+
 }

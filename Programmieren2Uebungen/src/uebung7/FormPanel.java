@@ -2,12 +2,14 @@ package uebung7;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-public class FormPanel extends JPanel implements MouseListener {
+public class FormPanel extends JPanel implements KeyListener, MouseListener {
 
 	enum Form {
 		CIRCLE, RECTANGLE, LINE
@@ -21,6 +23,8 @@ public class FormPanel extends JPanel implements MouseListener {
 	public FormPanel() {
 		createState = Form.CIRCLE;
 		this.addMouseListener(this);
+		this.addKeyListener(this);
+		this.requestFocus();
 	}
 
 	public Form getSelectedForm() {
@@ -93,6 +97,36 @@ public class FormPanel extends JPanel implements MouseListener {
 		}
 		g.drawRect(XOFFSET, y + 2 * ABSTAND, 25, 25);
 		g.drawLine(XOFFSET, y + 2 * ABSTAND, XOFFSET + 25, y + 2 * ABSTAND + 25);
+
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("penis");
+		switch (e.getKeyChar()) {
+		case 'c':
+			createState = Form.CIRCLE;
+			break;
+		case 'r':
+			createState = Form.RECTANGLE;
+			break;
+		case 'l':
+			createState = Form.LINE;
+			break;
+		}
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
 
 	}
 
