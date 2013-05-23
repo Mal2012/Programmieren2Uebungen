@@ -23,6 +23,13 @@ public class GraphikBeispiel {
 		Snowman sn = new Snowman();
 		sn.setBounds(10, 10, 450, 500);
 
+		GifImage gi = new GifImage();
+		gi.setBounds(20, 20, 140, 140);
+
+		GifImage gi2 = new GifImage();
+		gi2.setBounds(20, 320, 140, 140);
+		c.add(gi).setBackground(Color.GRAY);
+		c.add(gi2).setBackground(Color.GRAY);
 		c.add(d);
 		c.add(sn).setBackground(Color.GRAY);
 
