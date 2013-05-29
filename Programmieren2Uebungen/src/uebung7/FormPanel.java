@@ -11,8 +11,13 @@ import javax.swing.JPanel;
 
 public class FormPanel extends JPanel implements KeyListener, MouseListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5948842337434201451L;
+
 	enum Form {
-		CIRCLE, RECTANGLE, LINE
+		CIRCLE, RECTANGLE, LINE, STRING
 	};
 
 	Form createState;
@@ -23,8 +28,7 @@ public class FormPanel extends JPanel implements KeyListener, MouseListener {
 	public FormPanel() {
 		createState = Form.CIRCLE;
 		this.addMouseListener(this);
-		this.addKeyListener(this);
-		this.requestFocus();
+
 	}
 
 	public Form getSelectedForm() {
@@ -98,6 +102,13 @@ public class FormPanel extends JPanel implements KeyListener, MouseListener {
 		g.drawRect(XOFFSET, y + 2 * ABSTAND, 25, 25);
 		g.drawLine(XOFFSET, y + 2 * ABSTAND, XOFFSET + 25, y + 2 * ABSTAND + 25);
 
+		if (createState.ordinal() == 3) {
+			g.setColor(Color.RED);
+			g.drawRect(XOFFSET - 1, y + 3 * ABSTAND - 1, 27, 27);
+			g.setColor(Color.BLACK);
+		}
+		g.drawRect(XOFFSET, y + 3 * ABSTAND, 25, 25);
+		g.drawString("  AB", XOFFSET, y + 3 * ABSTAND + 19);
 	}
 
 	@Override
@@ -109,16 +120,23 @@ public class FormPanel extends JPanel implements KeyListener, MouseListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("penis");
+
 		switch (e.getKeyChar()) {
 		case 'c':
 			createState = Form.CIRCLE;
+			this.repaint();
 			break;
 		case 'r':
 			createState = Form.RECTANGLE;
+			this.repaint();
 			break;
 		case 'l':
 			createState = Form.LINE;
+			this.repaint();
+			break;
+		case 's':
+			createState = Form.STRING;
+			this.repaint();
 			break;
 		}
 

@@ -15,7 +15,7 @@ public class GraphicEditor {
 
 		wnd.setSize(800, 600);
 		wnd.setLocation(100, 100);
-
+		wnd.addKeyListener(create);
 		Container c = wnd.getContentPane();
 		c.setLayout(null);
 
