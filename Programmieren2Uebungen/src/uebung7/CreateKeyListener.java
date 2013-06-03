@@ -25,11 +25,11 @@ public class CreateKeyListener implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		if (cp.getForm().getSelectedForm() == Form.STRING) {
 			Text tmp = (Text) cp.getPaintObject();
-			if (e.getKeyCode() == KeyEvent.VK_ENTER)
+			if (e.getKeyChar() == KeyEvent.VK_ENTER)
 				cp.setPaintObject(new Text(cp.getString(),
 						cp.getStartPoint().x, cp.getStartPoint().y, cp
 								.getColor().getSelectedColor()));
-			else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
+			else if (e.getKeyChar() == KeyEvent.VK_BACK_SPACE)
 				tmp.deleteLast();
 			else
 				tmp.append(e.getKeyChar());

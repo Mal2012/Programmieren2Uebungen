@@ -36,8 +36,9 @@ public class FormKeyListener implements KeyListener {
 			fp.createState = Form.LINE;
 			fp.repaint();
 			break;
-		case 's':
+		case 't':
 			fp.createState = Form.STRING;
+			fp.removeKeyListener(fp.fkl);
 			fp.repaint();
 			break;
 		}

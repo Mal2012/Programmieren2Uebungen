@@ -26,11 +26,9 @@ public class FormPanel extends JPanel {
 	public FormPanel() {
 		createState = Form.CIRCLE;
 		this.addMouseListener(fml);
-
-	}
-
-	public Form getSelectedForm() {
-		return createState;
+		this.addKeyListener(fkl);
+		this.setFocusable(true);
+		this.requestFocusInWindow();
 	}
 
 	@Override
@@ -70,6 +68,10 @@ public class FormPanel extends JPanel {
 		}
 		g.drawRect(XOFFSET, y + 3 * ABSTAND, 25, 25);
 		g.drawString("  AB", XOFFSET, y + 3 * ABSTAND + 19);
+	}
+
+	public Form getSelectedForm() {
+		return createState;
 	}
 
 }
