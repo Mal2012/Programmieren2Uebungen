@@ -2,14 +2,10 @@ package uebung7;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-public class FormPanel extends JPanel implements KeyListener, MouseListener {
+public class FormPanel extends JPanel {
 
 	/**
 	 * 
@@ -21,55 +17,20 @@ public class FormPanel extends JPanel implements KeyListener, MouseListener {
 	};
 
 	Form createState;
+	FormKeyListener fkl = new FormKeyListener(this);
+	FormMouseListener fml = new FormMouseListener(this);
 	static final int XOFFSET = 15;
 	static final int YOFFSET = 30;
 	static final int ABSTAND = 60;
 
 	public FormPanel() {
 		createState = Form.CIRCLE;
-		this.addMouseListener(this);
+		this.addMouseListener(fml);
 
 	}
 
 	public Form getSelectedForm() {
 		return createState;
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent m) {
-		int x = m.getX();
-		int y = m.getY();
-		int xp = XOFFSET;
-		int yp = YOFFSET;
-
-		for (int i = 0; i < Form.values().length; i++) {
-			if (x >= xp && (x <= xp + 25))
-				if (y >= YOFFSET && y <= yp + 25 + (i * ABSTAND)) {
-					createState = Form.values()[i];
-					break;
-				}
-		}
-		this.repaint();
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent m) {
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent m) {
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent m) {
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent m) {
-
 	}
 
 	@Override
@@ -109,43 +70,6 @@ public class FormPanel extends JPanel implements KeyListener, MouseListener {
 		}
 		g.drawRect(XOFFSET, y + 3 * ABSTAND, 25, 25);
 		g.drawString("  AB", XOFFSET, y + 3 * ABSTAND + 19);
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-		switch (e.getKeyChar()) {
-		case 'c':
-			createState = Form.CIRCLE;
-			this.repaint();
-			break;
-		case 'r':
-			createState = Form.RECTANGLE;
-			this.repaint();
-			break;
-		case 'l':
-			createState = Form.LINE;
-			this.repaint();
-			break;
-		case 's':
-			createState = Form.STRING;
-			this.repaint();
-			break;
-		}
-
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

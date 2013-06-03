@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 public class GraphicEditor {
 	static ColorPanel col = new ColorPanel();
 	static FormPanel create = new FormPanel();
-	static CreatePanel editor = new CreatePanel(col, create);
+	static CreatePanel editor = new CreatePanel(create, col);
 
 	public static void main(String[] args) {
 		JFrame wnd = new JFrame("GraphicEditor");
@@ -15,7 +15,9 @@ public class GraphicEditor {
 
 		wnd.setSize(800, 600);
 		wnd.setLocation(100, 100);
-		wnd.addKeyListener(create);
+		// wnd.addKeyListener(create);
+		// create.setFocusable(true);
+		// create.requestFocusInWindow();
 		Container c = wnd.getContentPane();
 		c.setLayout(null);
 
