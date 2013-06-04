@@ -25,6 +25,7 @@ public class StopWatch extends JFrame {
 		wnd.getStart().addActionListener(action);
 		wnd.getStop().addActionListener(action);
 		wnd.getReset().addActionListener(action);
+		wnd.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
 	public int getCurrentTime() {

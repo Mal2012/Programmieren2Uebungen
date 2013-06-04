@@ -3,7 +3,6 @@ package uebung8;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -67,23 +66,23 @@ public class StopWatch_Window extends JFrame {
 		Container c = this.getContentPane();
 		c.setLayout(new BorderLayout());
 		JPanel display = new JPanel();
-		status = new JLabel("stopped");
-		status.setForeground(Color.BLUE);
+		status = new JLabel("Status: Stopped");
+		status.setForeground(Color.BLACK);
 
 		display.setLayout(new BorderLayout());
 
 		JPanel timePanel = new JPanel();
-		TitledBorder b = new TitledBorder(new LineBorder(Color.BLUE), "Display");
-		b.setTitleColor(Color.BLUE);
+		TitledBorder b = new TitledBorder(new LineBorder(Color.BLACK),
+				"Display");
+		b.setTitleColor(Color.BLACK);
 		timePanel.setBorder(b);
 		time = new JLabel("0.0");
-		time.setFont(new Font("Times New Roman", Font.BOLD, 24));
-		time.setForeground(Color.BLUE);
+		time.setForeground(Color.BLACK);
 
 		JLabel seconds = new JLabel("Seconds:    ");
 		seconds.setHorizontalAlignment(SwingConstants.RIGHT);
-		seconds.setFont(new Font("Times New Roman", Font.BOLD, 24));
-		seconds.setForeground(Color.BLUE);
+
+		seconds.setForeground(Color.BLACK);
 		timePanel.setLayout(new GridLayout(1, 2));
 
 		timePanel.add(seconds);
@@ -96,14 +95,12 @@ public class StopWatch_Window extends JFrame {
 		g.setHgap(2);
 		buttonPanel.setLayout(g);
 		start = new JButton("Start");
-		start.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
 		stop = new JButton("Stop");
-		stop.setFont(new Font("Times New Roman", Font.BOLD, 24));
+
 		stop.setEnabled(false);
 
 		reset = new JButton("Reset");
-		reset.setFont(new Font("Times New Roman", Font.BOLD, 24));
 
 		buttonPanel.add(start);
 		buttonPanel.add(stop);
