@@ -14,10 +14,9 @@ public class CreatePanel extends JPanel {
 	CreateMouseMotionListener cmml = new CreateMouseMotionListener(this);
 	CreateKeyListener ckl = new CreateKeyListener(this);
 	private int objX, objY;
-
 	private Point startPoint, endPoint;
 	private final Point sizeOfObject;
-	private final FormPanel form;
+	final FormPanel form;
 	private final ColorPanel color;
 	private final String string = "";
 	private final LinkedList<GraphicPrimitive> graphicObjects;
@@ -28,27 +27,26 @@ public class CreatePanel extends JPanel {
 
 		this.setSize(super.getSize());
 		this.setBackground(Color.LIGHT_GRAY);
+
 		this.addMouseListener(cml);
 		this.addMouseMotionListener(cmml);
 		this.addKeyListener(ckl);
+		this.setFocusable(true);
+		this.requestFocusInWindow();
 		this.form = form;
 		this.color = color;
 		this.setStartPoint(new Point());
 		this.setEndPoint(new Point());
 		this.sizeOfObject = new Point();
-
 		this.graphicObjects = new LinkedList<GraphicPrimitive>();
-
 		setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
-
-		// g.setColor(Color.BLACK);
-		// g.drawRect(0, 0, 783, 455);
 
 		for (GraphicPrimitive gp : this.getGraphicObjects()) {
 			gp.paintComponent(g);
@@ -117,6 +115,14 @@ public class CreatePanel extends JPanel {
 
 	public LinkedList<GraphicPrimitive> getGraphicObjects() {
 		return graphicObjects;
+	}
+
+	public CreateKeyListener getCkl() {
+		return ckl;
+	}
+
+	public void setCkl(CreateKeyListener ckl) {
+		this.ckl = ckl;
 	}
 }
 

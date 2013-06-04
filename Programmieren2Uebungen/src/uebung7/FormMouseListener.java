@@ -25,11 +25,6 @@ public class FormMouseListener implements MouseListener {
 			if (x >= xp && (x <= xp + 25))
 				if (y >= fp.YOFFSET && y <= yp + 25 + (i * fp.ABSTAND)) {
 					fp.createState = Form.values()[i];
-					if (fp.createState.ordinal() == 3) {
-						fp.removeKeyListener(fp.fkl);
-					} else {
-						fp.addKeyListener(fp.fkl);
-					}
 					break;
 				}
 		}

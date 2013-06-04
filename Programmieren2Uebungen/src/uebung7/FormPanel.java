@@ -17,7 +17,6 @@ public class FormPanel extends JPanel {
 	};
 
 	Form createState;
-	FormKeyListener fkl = new FormKeyListener(this);
 	FormMouseListener fml = new FormMouseListener(this);
 	static final int XOFFSET = 15;
 	static final int YOFFSET = 30;
@@ -26,9 +25,10 @@ public class FormPanel extends JPanel {
 	public FormPanel() {
 		createState = Form.CIRCLE;
 		this.addMouseListener(fml);
-		this.addKeyListener(fkl);
-		this.setFocusable(true);
-		this.requestFocusInWindow();
+		// this.addKeyListener(fkl);
+		// this.setFocusable(true);
+		// this.requestFocusInWindow();
+
 	}
 
 	@Override
