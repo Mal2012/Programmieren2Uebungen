@@ -15,23 +15,25 @@ public class CreateKeyListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		switch (e.getKeyChar()) {
-		case 'c':
-			cp.form.createState = Form.CIRCLE;
-			cp.form.repaint();
-			break;
-		case 'r':
-			cp.form.createState = Form.RECTANGLE;
-			cp.form.repaint();
-			break;
-		case 'l':
-			cp.form.createState = Form.LINE;
-			cp.form.repaint();
-			break;
-		case 't':
-			cp.form.createState = Form.STRING;
-			cp.form.repaint();
-			break;
+		if (cp.getForm().getSelectedForm() != Form.STRING) {
+			switch (e.getKeyChar()) {
+			case 'c':
+				cp.form.createState = Form.CIRCLE;
+				cp.form.repaint();
+				break;
+			case 'r':
+				cp.form.createState = Form.RECTANGLE;
+				cp.form.repaint();
+				break;
+			case 'l':
+				cp.form.createState = Form.LINE;
+				cp.form.repaint();
+				break;
+			case 't':
+				cp.form.createState = Form.STRING;
+				cp.form.repaint();
+				break;
+			}
 		}
 	}
 
