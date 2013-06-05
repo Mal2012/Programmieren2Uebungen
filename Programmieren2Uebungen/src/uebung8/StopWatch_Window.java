@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,13 +15,14 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-public class StopWatch_Window extends JFrame {
+public class StopWatch_Window extends JFrame implements Observer {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1595089808395749933L;
 	private JButton start, stop, reset;
 	private JLabel status, time, minutes;
+	private StopWatch_Action action;
 
 	public JButton getStart() {
 		return start;
@@ -61,10 +64,12 @@ public class StopWatch_Window extends JFrame {
 		this.time = time;
 	}
 
-	public StopWatch_Window() {
+	public StopWatch_Window(StopWatch_Action action) {
 		super("StopWatch");
+		this.action = action;
 		Container c = this.getContentPane();
 		c.setLayout(new BorderLayout());
+		action.addObserver(this);
 		JPanel display = new JPanel();
 		status = new JLabel("Status: Stopped");
 		status.setForeground(Color.BLACK);
@@ -111,7 +116,6 @@ public class StopWatch_Window extends JFrame {
 		buttonPanel.add(start);
 		buttonPanel.add(stop);
 		buttonPanel.add(reset);
-
 		display.add("South", buttonPanel);
 		c.add("Center", display);
 		c.add("South", status);
@@ -124,6 +128,12 @@ public class StopWatch_Window extends JFrame {
 
 	public void setMinutes(JLabel minutes) {
 		this.minutes = minutes;
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		repaint();
 	}
 
 }

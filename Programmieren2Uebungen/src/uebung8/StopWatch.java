@@ -16,7 +16,7 @@ public class StopWatch extends JFrame {
 	private StopWatch_Action action;
 
 	public StopWatch() {
-		StopWatch_Window wnd = new StopWatch_Window();
+		StopWatch_Window wnd = new StopWatch_Window(action);
 		action = new StopWatch_Action(this, wnd);
 
 		myTimerClock = new javax.swing.Timer(100, action);
@@ -27,6 +27,7 @@ public class StopWatch extends JFrame {
 		wnd.getStop().addActionListener(action);
 		wnd.getReset().addActionListener(action);
 		wnd.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 	}
 
 	public int getCurrentTime() {

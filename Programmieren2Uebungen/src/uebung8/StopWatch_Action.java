@@ -2,8 +2,9 @@ package uebung8;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
 
-public class StopWatch_Action implements ActionListener {
+public class StopWatch_Action extends Observable implements ActionListener {
 
 	StopWatch_Window wnd;
 	StopWatch sw;
@@ -28,7 +29,9 @@ public class StopWatch_Action implements ActionListener {
 			wnd.getTime().setText(
 					new Float(((float) sw.getCurrentTime()) / 10).toString());
 			wnd.getStatus().setText("Status: Running...");
-			wnd.repaint();
+			this.setChanged();
+			this.notifyObservers();
+
 		}
 		if (e.getActionCommand() != null) {
 			switch (e.getActionCommand()) {
@@ -46,7 +49,8 @@ public class StopWatch_Action implements ActionListener {
 				wnd.getStart().setEnabled(true);
 				wnd.getReset().setEnabled(true);
 				wnd.getStop().setEnabled(false);
-				wnd.repaint();
+				this.setChanged();
+				this.notifyObservers();
 				break;
 			case "Reset":
 
@@ -54,7 +58,8 @@ public class StopWatch_Action implements ActionListener {
 				sw.setMinutes(0);
 				wnd.getMinutes().setText("0");
 				wnd.getTime().setText("0.0");
-				wnd.repaint();
+				this.setChanged();
+				this.notifyObservers();
 				break;
 			default:
 				System.out.println(e.getActionCommand());
