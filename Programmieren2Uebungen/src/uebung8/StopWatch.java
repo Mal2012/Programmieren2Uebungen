@@ -10,6 +10,7 @@ public class StopWatch extends JFrame {
 	private static final long serialVersionUID = -7886335892821251303L;
 
 	private int currentTime = 0;
+	private int minutes = 0;
 
 	private javax.swing.Timer myTimerClock;
 	private StopWatch_Action action;
@@ -42,5 +43,13 @@ public class StopWatch extends JFrame {
 
 	public void setCurrentTime(int currentTime) {
 		this.currentTime = currentTime;
+	}
+
+	public int getMinutes() {
+		return minutes;
+	}
+
+	public void setMinutes(int minutes) {
+		this.minutes = minutes;
 	}
 }

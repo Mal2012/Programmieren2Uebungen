@@ -19,7 +19,7 @@ public class StopWatch_Window extends JFrame {
 	 */
 	private static final long serialVersionUID = -1595089808395749933L;
 	private JButton start, stop, reset;
-	private JLabel status, time;
+	private JLabel status, time, minutes;
 
 	public JButton getStart() {
 		return start;
@@ -77,14 +77,20 @@ public class StopWatch_Window extends JFrame {
 		b.setTitleColor(Color.BLACK);
 		timePanel.setBorder(b);
 		time = new JLabel("0.0");
+		minutes = new JLabel("0");
+		minutes.setForeground(Color.BLACK);
 		time.setForeground(Color.BLACK);
+		JLabel display_name = new JLabel("Timer: ");
+		JLabel seconds = new JLabel(":");
 
-		JLabel seconds = new JLabel("Seconds:    ");
-		seconds.setHorizontalAlignment(SwingConstants.RIGHT);
+		seconds.setHorizontalAlignment(SwingConstants.LEFT);
 
 		seconds.setForeground(Color.BLACK);
 		timePanel.setLayout(new GridLayout(1, 2));
 
+		timePanel.add(display_name);
+
+		timePanel.add(minutes);
 		timePanel.add(seconds);
 		timePanel.add(time);
 
@@ -110,6 +116,14 @@ public class StopWatch_Window extends JFrame {
 		c.add("Center", display);
 		c.add("South", status);
 
+	}
+
+	public JLabel getMinutes() {
+		return minutes;
+	}
+
+	public void setMinutes(JLabel minutes) {
+		this.minutes = minutes;
 	}
 
 }

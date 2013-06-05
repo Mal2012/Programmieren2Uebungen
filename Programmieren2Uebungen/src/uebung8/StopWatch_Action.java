@@ -17,7 +17,14 @@ public class StopWatch_Action implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getID() == 0) {
-			sw.setCurrentTime(sw.getCurrentTime() + 1);
+			if (sw.getCurrentTime() == 590) {
+				sw.setMinutes(sw.getMinutes() + 1);
+				sw.setCurrentTime(0);
+				wnd.getMinutes().setText(
+						new Integer(sw.getMinutes()).toString());
+			} else {
+				sw.setCurrentTime(sw.getCurrentTime() + 1);
+			}
 			wnd.getTime().setText(
 					new Float(((float) sw.getCurrentTime()) / 10).toString());
 			wnd.getStatus().setText("Status: Running...");
@@ -44,6 +51,8 @@ public class StopWatch_Action implements ActionListener {
 			case "Reset":
 
 				sw.setCurrentTime(0);
+				sw.setMinutes(0);
+				wnd.getMinutes().setText("0");
 				wnd.getTime().setText("0.0");
 				wnd.repaint();
 				break;
