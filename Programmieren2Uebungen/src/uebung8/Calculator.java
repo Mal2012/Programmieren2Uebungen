@@ -9,6 +9,8 @@ public class Calculator {
 	Calculator_View view;
 	Calculator_Actions action;
 	Calculator_KeyHandler key;
+	private float result;
+	Object pek;
 
 	public Stack<String> getOp() {
 		return op;
@@ -42,12 +44,11 @@ public class Calculator {
 		this.result = result;
 	}
 
-	private float result;
-
 	public Calculator() {
 		op = new Stack<String>();
 		x = new StringBuffer();
 		y = new StringBuffer();
+		result = 0.0f;
 		view = new Calculator_View();
 		action = new Calculator_Actions(this);
 		key = new Calculator_KeyHandler(this);
@@ -81,19 +82,28 @@ public class Calculator {
 	}
 
 	public float compute() {
-		float temp = Float.parseFloat(op.pop());
-		Object pek = op.pop();
+		System.out.println(op.toString());
+		if (!op.peek().matches("([0-9]+[0-9]*)|\\+|-|\\*|/"))
+			op.pop();
+		System.out.println(!op.peek().matches("([0-9]+[0-9]*)|\\+|-|\\*|/"));
+
+		if (!op.peek().equals("+") && !op.peek().equals("-")
+				&& !op.peek().equals("*") && !op.peek().equals("/")) {
+
+			result = Float.parseFloat(op.pop());
+
+		}
+		pek = op.pop();
 		if (pek.equals("+")) {
-			return temp + Float.parseFloat(op.pop());
+			return result += Float.parseFloat(op.pop());
 		} else if (pek.equals("-")) {
-			return (Float.parseFloat(op.pop()) - temp);
+			return result = (Float.parseFloat(op.pop()) - result);
 		} else if (pek.equals("*")) {
-			return temp * Float.parseFloat(op.pop());
+			return result *= Float.parseFloat(op.pop());
 		} else if (pek.equals("/")) {
-			return (Float.parseFloat(op.pop()) / temp);
+			return result = (Float.parseFloat(op.pop()) / result);
 		} else {
 			return 0;
 		}
 	}
-
 }

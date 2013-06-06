@@ -30,9 +30,11 @@ public class CreatePanel extends JPanel {
 
 		this.addMouseListener(cml);
 		this.addMouseMotionListener(cmml);
+
 		this.addKeyListener(ckl);
 		this.setFocusable(true);
 		this.requestFocusInWindow();
+
 		this.form = form;
 		this.color = color;
 		this.setStartPoint(new Point());
