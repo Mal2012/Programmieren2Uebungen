@@ -26,7 +26,7 @@ public class GifImage extends JPanel {
 		super.paintComponent(g);
 
 		if (img != null) {
-			System.out.println(g.drawImage(img, 0, 0, 140, 140, this));
+			g.drawImage(img, 0, 0, 140, 140, this);
 		}
 
 	}

@@ -12,6 +12,7 @@ public class StopWatch_Action extends Observable implements ActionListener {
 	public StopWatch_Action(StopWatch sw, StopWatch_Window wnd) {
 		this.sw = sw;
 		this.wnd = wnd;
+		this.addObserver(wnd);
 	}
 
 	@Override

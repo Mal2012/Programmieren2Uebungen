@@ -20,7 +20,8 @@ public class Calculator_Actions extends Observable implements ActionListener {
 				|| arg0.getActionCommand().equals("+")
 				|| arg0.getActionCommand().equals("-")
 				|| arg0.getActionCommand().equals("=")) {
-			calc.getOp().add(calc.getX().toString());
+			if (!calc.getX().toString().equals(""))
+				calc.getOp().add(calc.getX().toString());
 
 			if (!arg0.getActionCommand().equals("=")) {
 				calc.getOp().add(arg0.getActionCommand());

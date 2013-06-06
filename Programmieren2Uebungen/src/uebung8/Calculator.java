@@ -10,7 +10,7 @@ public class Calculator {
 	Calculator_Actions action;
 	Calculator_KeyHandler key;
 	private float result;
-	Object pek;
+	Object pek, peek;
 
 	public Stack<String> getOp() {
 		return op;
@@ -83,27 +83,56 @@ public class Calculator {
 
 	public float compute() {
 		System.out.println(op.toString());
-		if (!op.peek().matches("([0-9]+[0-9]*)|\\+|-|\\*|/"))
-			op.pop();
-		System.out.println(!op.peek().matches("([0-9]+[0-9]*)|\\+|-|\\*|/"));
-
-		if (!op.peek().equals("+") && !op.peek().equals("-")
-				&& !op.peek().equals("*") && !op.peek().equals("/")) {
-
-			result = Float.parseFloat(op.pop());
-
-		}
 		pek = op.pop();
-		if (pek.equals("+")) {
-			return result += Float.parseFloat(op.pop());
-		} else if (pek.equals("-")) {
-			return result = (Float.parseFloat(op.pop()) - result);
-		} else if (pek.equals("*")) {
-			return result *= Float.parseFloat(op.pop());
-		} else if (pek.equals("/")) {
-			return result = (Float.parseFloat(op.pop()) / result);
+		peek = op.pop();
+
+		if (!op.isEmpty()) {
+			if (peek.toString().equals("+")) {
+				result = Float.parseFloat(pek.toString())
+						+ Float.parseFloat(op.pop());
+				if (!op.isEmpty()) {
+
+					this.compute();
+				}
+				return result;
+
+			} else if (peek.toString().equals("-")) {
+				result = Float.parseFloat(op.pop())
+						- Float.parseFloat(pek.toString());
+				if (!op.isEmpty()) {
+					this.compute();
+				}
+
+				return result;
+			} else if (peek.toString().equals("*")) {
+				result = Float.parseFloat(op.pop())
+						* Float.parseFloat(pek.toString());
+				if (!op.isEmpty()) {
+					this.compute();
+				}
+				return result;
+			} else if (peek.toString().equals("/")) {
+				result = Float.parseFloat(op.pop())
+						/ Float.parseFloat(pek.toString());
+				if (!op.isEmpty()) {
+					this.compute();
+				}
+				return result;
+			}
 		} else {
-			return 0;
+			if (peek.toString().equals("+")) {
+				return result += Float.parseFloat(pek.toString());
+			} else if (peek.toString().equals("-")) {
+				return result -= Float.parseFloat(op.pop());
+			} else if (peek.toString().equals("*")) {
+				return result *= Float.parseFloat(pek.toString());
+			} else if (peek.toString().equals("/")) {
+				return result /= Float.parseFloat(pek.toString());
+			}
 		}
+
+		System.out.println("Pek: " + pek);
+
+		return 1;
 	}
 }

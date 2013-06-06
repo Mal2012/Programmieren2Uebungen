@@ -7,6 +7,7 @@ public class StopWatch_Test {
 		JFrame.setDefaultLookAndFeelDecorated(false);
 		StopWatch aDigitalClock = new StopWatch();
 		StopWatch aDigitalClock2 = new StopWatch();
+		StopWatch aDigitalClock3 = new StopWatch();
 
 	}
 }

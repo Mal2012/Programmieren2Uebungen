@@ -22,7 +22,6 @@ public class StopWatch_Window extends JFrame implements Observer {
 	private static final long serialVersionUID = -1595089808395749933L;
 	private JButton start, stop, reset;
 	private JLabel status, time, minutes;
-	private StopWatch_Action action;
 
 	public JButton getStart() {
 		return start;
@@ -64,16 +63,15 @@ public class StopWatch_Window extends JFrame implements Observer {
 		this.time = time;
 	}
 
-	public StopWatch_Window(StopWatch_Action action) {
+	public StopWatch_Window() {
 		super("StopWatch");
-		this.action = action;
+
 		Container c = this.getContentPane();
 		c.setLayout(new BorderLayout());
-		action.addObserver(this);
 		JPanel display = new JPanel();
 		status = new JLabel("Status: Stopped");
 		status.setForeground(Color.BLACK);
-
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		display.setLayout(new BorderLayout());
 
 		JPanel timePanel = new JPanel();

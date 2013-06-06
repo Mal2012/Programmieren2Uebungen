@@ -1,8 +1,6 @@
 package uebung8;
 
-import javax.swing.JFrame;
-
-public class StopWatch extends JFrame {
+public class StopWatch {
 
 	/**
 	 * 
@@ -16,9 +14,9 @@ public class StopWatch extends JFrame {
 	private StopWatch_Action action;
 
 	public StopWatch() {
-		StopWatch_Window wnd = new StopWatch_Window(action);
-		action = new StopWatch_Action(this, wnd);
 
+		StopWatch_Window wnd = new StopWatch_Window();
+		action = new StopWatch_Action(this, wnd);
 		myTimerClock = new javax.swing.Timer(100, action);
 
 		wnd.setBounds(200, 200, 400, 150);
@@ -26,7 +24,6 @@ public class StopWatch extends JFrame {
 		wnd.getStart().addActionListener(action);
 		wnd.getStop().addActionListener(action);
 		wnd.getReset().addActionListener(action);
-		wnd.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	}
 
