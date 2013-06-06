@@ -8,6 +8,7 @@ public class Calculator {
 	private Stack<String> op;
 	Calculator_View view;
 	Calculator_Actions action;
+	Calculator_KeyHandler key;
 
 	public Stack<String> getOp() {
 		return op;
@@ -49,6 +50,7 @@ public class Calculator {
 		y = new StringBuffer();
 		view = new Calculator_View();
 		action = new Calculator_Actions(this);
+		key = new Calculator_KeyHandler(this);
 		view.getOne().addActionListener(action);
 		view.getTwo().addActionListener(action);
 		view.getThree().addActionListener(action);
@@ -65,7 +67,9 @@ public class Calculator {
 		view.getDevide().addActionListener(action);
 		view.getDot().addActionListener(action);
 		view.getGetresult().addActionListener(action);
-
+		view.addKeyListener(key);
+		view.setFocusable(true);
+		view.requestFocusInWindow();
 	}
 
 	public Calculator_View getView() {
@@ -79,13 +83,13 @@ public class Calculator {
 	public float compute() {
 		float temp = Float.parseFloat(op.pop());
 		Object pek = op.pop();
-		if (pek == "+") {
+		if (pek.equals("+")) {
 			return temp + Float.parseFloat(op.pop());
-		} else if (pek == "-") {
+		} else if (pek.equals("-")) {
 			return (Float.parseFloat(op.pop()) - temp);
-		} else if (pek == "*") {
+		} else if (pek.equals("*")) {
 			return temp * Float.parseFloat(op.pop());
-		} else if (pek == "/") {
+		} else if (pek.equals("/")) {
 			return (Float.parseFloat(op.pop()) / temp);
 		} else {
 			return 0;
