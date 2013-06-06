@@ -82,7 +82,7 @@ public class Calculator {
 	}
 
 	public float compute() {
-		System.out.println(op.toString());
+
 		pek = op.pop();
 		peek = op.pop();
 
@@ -91,7 +91,7 @@ public class Calculator {
 				result = Float.parseFloat(pek.toString())
 						+ Float.parseFloat(op.pop());
 				if (!op.isEmpty()) {
-
+					this.reverse();
 					this.compute();
 				}
 				return result;
@@ -100,6 +100,7 @@ public class Calculator {
 				result = Float.parseFloat(op.pop())
 						- Float.parseFloat(pek.toString());
 				if (!op.isEmpty()) {
+					this.reverse();
 					this.compute();
 				}
 
@@ -108,6 +109,7 @@ public class Calculator {
 				result = Float.parseFloat(op.pop())
 						* Float.parseFloat(pek.toString());
 				if (!op.isEmpty()) {
+					this.reverse();
 					this.compute();
 				}
 				return result;
@@ -115,6 +117,7 @@ public class Calculator {
 				result = Float.parseFloat(op.pop())
 						/ Float.parseFloat(pek.toString());
 				if (!op.isEmpty()) {
+					this.reverse();
 					this.compute();
 				}
 				return result;
@@ -131,8 +134,15 @@ public class Calculator {
 			}
 		}
 
-		System.out.println("Pek: " + pek);
-
 		return 1;
+	}
+
+	private void reverse() {
+		// TODO Auto-generated method stub
+		Stack<String> temp = new Stack<String>();
+		while (!op.isEmpty()) {
+			temp.add(op.pop());
+		}
+		this.op = temp;
 	}
 }
