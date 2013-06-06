@@ -96,20 +96,4 @@ public class Calculator {
 		}
 	}
 
-	public float addition(float x, float y) {
-		return result = x + y;
-	}
-
-	public float subtract(float x, float y) {
-		return result = x - y;
-	}
-
-	public float multiply(float x, float y) {
-		return result = x * y;
-	}
-
-	public float devide(float x, float y) {
-		return result = x / y;
-	}
-
 }
