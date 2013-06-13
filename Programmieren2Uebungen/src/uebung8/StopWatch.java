@@ -17,6 +17,7 @@ public class StopWatch {
 
 		StopWatch_Window wnd = new StopWatch_Window();
 		action = new StopWatch_Action(this, wnd);
+
 		myTimerClock = new javax.swing.Timer(100, action);
 
 		wnd.setBounds(200, 200, 400, 150);

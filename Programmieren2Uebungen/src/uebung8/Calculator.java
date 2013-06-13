@@ -123,10 +123,11 @@ public class Calculator {
 				return result;
 			}
 		} else {
+
 			if (peek.toString().equals("+")) {
 				return result += Float.parseFloat(pek.toString());
 			} else if (peek.toString().equals("-")) {
-				return result -= Float.parseFloat(op.pop());
+				return result -= Float.parseFloat(pek.toString());
 			} else if (peek.toString().equals("*")) {
 				return result *= Float.parseFloat(pek.toString());
 			} else if (peek.toString().equals("/")) {
