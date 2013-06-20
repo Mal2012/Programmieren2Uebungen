@@ -14,5 +14,12 @@ public class TextEditor extends JFrame {
 	public static void main(String[] args) {
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		TextEditor t = new TextEditor();
+		// try {
+		// Runtime.getRuntime().exec("C:/Windows/system32/notepad.exe");
+		//
+		// } catch (IOException e) {
+		//
+		// e.printStackTrace();
+		// }
 	}
 }

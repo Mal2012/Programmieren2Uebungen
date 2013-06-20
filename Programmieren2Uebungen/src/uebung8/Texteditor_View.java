@@ -98,20 +98,25 @@ public class Texteditor_View extends JFrame {
 
 	public void createToolbar(JToolBar toolbar) {
 		Action boldCommand = new Texteditor_BoldCommand("Bold", new ImageIcon(
-				"src/images/bold.gif"), null, null, this);
+				TextEditor.class.getResource("/uebung8/bold.gif")), null, null,
+				this);
 		JButton bold = new JButton(boldCommand);
 
 		bold.setText("");
 		bold.setSelected(false);
 
 		Action italicCommand = new Texteditor_ItalicCommand("Italic",
-				new ImageIcon("src/images/italic.gif"), null, null, this);
+				new ImageIcon(TextEditor.class
+						.getResource("/uebung8/italic.gif")),
+				null, null, this);
 		JButton italic = new JButton(italicCommand);
 		italic.setText("");
 
 		Action underlinedCommand = new Texteditor_UnderlinedCommand(
-				"Underline", new ImageIcon("src/images/underline.gif"), null,
-				null, this);
+				"Underline",
+				new ImageIcon(TextEditor.class
+						.getResource("/uebung8/underline.gif")), null, null,
+				this);
 		JButton underlined = new JButton(underlinedCommand);
 		underlined.setText("");
 
