@@ -1,11 +1,13 @@
 package bimbfi;
 
 public class Girokonto extends Konto {
-	protected int kontonummera;
+
 	protected int maxbetrag = -100;
+	protected KontoView view;
 
 	public Girokonto() {
 		this.kontonummera = kontonummer;
+		this.view = new KontoView(this);
 	}
 
 	@Override
@@ -13,6 +15,8 @@ public class Girokonto extends Konto {
 		// TODO Auto-generated method stub
 		kontostandalt = kontostand;
 		kontostand += betrag;
+		super.setChanged();
+		super.notifyObservers();
 	}
 
 	@Override
@@ -21,6 +25,8 @@ public class Girokonto extends Konto {
 		if (kontostand - betrag >= maxbetrag) {
 			kontostandalt = kontostand;
 			kontostand -= betrag;
+			super.setChanged();
+			super.notifyObservers();
 		} else {
 			new KontoException("Überziehungsrahmen erreicht!");
 		}

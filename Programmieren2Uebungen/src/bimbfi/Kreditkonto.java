@@ -1,12 +1,16 @@
 package bimbfi;
 
 public class Kreditkonto extends Konto {
-	protected int kontonummera;
+
+	protected KontoView view;
 
 	public Kreditkonto(int betrag) {
 		kontostand = betrag;
 		kontostandalt = betrag;
 		this.kontonummera = kontonummer;
+		this.view = new KontoView(this);
+		super.setChanged();
+		super.notifyObservers();
 	}
 
 	@Override
@@ -15,6 +19,8 @@ public class Kreditkonto extends Konto {
 		if (kontostand + betrag <= 0) {
 			kontostandalt = kontostand;
 			kontostand += betrag;
+			super.setChanged();
+			super.notifyObservers();
 		} else {
 			new Exception("Kontostand >0");
 		}

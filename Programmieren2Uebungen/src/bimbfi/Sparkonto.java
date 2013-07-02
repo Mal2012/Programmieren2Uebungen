@@ -2,10 +2,11 @@ package bimbfi;
 
 public class Sparkonto extends Konto {
 
-	protected int kontonummera;
+	protected KontoView view;
 
 	public Sparkonto() {
 		this.kontonummera = kontonummer;
+		this.view = new KontoView(this);
 	}
 
 	@Override
@@ -13,6 +14,8 @@ public class Sparkonto extends Konto {
 		// TODO Auto-generated method stub
 		kontostandalt = kontostand;
 		kontostand += betrag;
+		super.setChanged();
+		super.notifyObservers();
 	}
 
 	@Override
@@ -21,6 +24,8 @@ public class Sparkonto extends Konto {
 		if (kontostand - betrag >= 0) {
 			kontostandalt = kontostand;
 			kontostand -= betrag;
+			super.setChanged();
+			super.notifyObservers();
 		} else {
 			new KontoException("Überziehungsrahmen erreicht!");
 		}
