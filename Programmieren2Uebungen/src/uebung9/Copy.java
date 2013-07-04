@@ -18,16 +18,20 @@ public class Copy {
 		File file1 = new File(args[0]);
 		File file2 = new File(args[1]);
 
-		// copy(file1, file2);
-		// createTestFile();
-
-		long timetemp2 = System.nanoTime();
-		System.out.println(compare(file1, file2));
-		System.out.println(System.nanoTime() - timetemp2);
 		//
-		// long timetemp = System.nanoTime();
-		// System.out.println(compare2(file1, file2));
-		// System.out.println(System.nanoTime() - timetemp);
+		// createTestFile();
+		//
+		// long timetemp2 = System.nanoTime();
+		// System.out.println(compare(file1, file2));
+		// System.out.println(System.nanoTime() - timetemp2);
+
+		long timetemp = System.nanoTime();
+		System.out.println(compare2(file1, file2));
+		System.out.println(System.nanoTime() - timetemp);
+
+		// long timetemp3 = System.nanoTime();
+		// System.out.println(compare3(file1, file2));
+		// System.out.println(System.nanoTime() - timetemp3);
 
 	}
 
@@ -82,8 +86,8 @@ public class Copy {
 			InputStreamReader input2 = new InputStreamReader(
 					new FileInputStream(file2));
 
-			byte[] temp1 = new byte[1024];
-			byte[] temp2 = new byte[1024];
+			byte[] temp1 = new byte[4096];
+			byte[] temp2 = new byte[4096];
 
 			if (file1.length() != file2.length()) {
 
@@ -92,12 +96,10 @@ public class Copy {
 				return false;
 			} else {
 
-				for (int j = 0; j <= (file1.length() / 1024); j++) {
-					temp1 = new byte[1024];
-					temp2 = new byte[1024];
-					System.out.print("j:" + j);
-					for (int i = j; i < 1024; i++) {
-						System.out.println(" i:" + i);
+				for (int j = 0; j <= (file1.length() / 4096); j++) {
+
+					for (int i = 0; i < 4096; i++) {
+
 						temp1[i] = (byte) input1.read();
 						temp2[i] = (byte) input2.read();
 						if (temp1[i] == temp2[i]) {
@@ -106,7 +108,8 @@ public class Copy {
 							return false;
 						}
 					}
-
+					temp1 = new byte[4096];
+					temp2 = new byte[4096];
 				}
 
 			}
@@ -130,20 +133,17 @@ public class Copy {
 			InputStreamReader input2 = new InputStreamReader(
 					new FileInputStream(file2));
 
-			if (input1.read() != input2.read()) {
+			if (file1.length() != file2.length()) {
 
 				input1.close();
 				input2.close();
 				return false;
 			} else {
-				byte tmp1 = (byte) input1.read();
-				byte tmp2 = (byte) input2.read();
+				int tempLength = (int) file1.length();
+				while (tempLength > 0) {
 
-				while (tmp1 != -1 && tmp2 != -1) {
-
-					if (tmp1 == tmp2) {
-						tmp1 = (byte) input1.read();
-						tmp2 = (byte) input2.read();
+					if (input1.read() == input2.read()) {
+						tempLength--;
 						continue;
 					} else {
 						input1.close();
@@ -163,6 +163,16 @@ public class Copy {
 		}
 
 		return true;
+
+	}
+
+	public static Boolean compare3(File file1, File file2) {
+
+		if (file1.hashCode() == file2.hashCode()) {
+			return true;
+		} else {
+			return false;
+		}
 
 	}
 
