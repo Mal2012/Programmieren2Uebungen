@@ -1,10 +1,12 @@
 package uebung9;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.channels.FileChannel;
@@ -16,13 +18,16 @@ public class Copy {
 		File file1 = new File(args[0]);
 		File file2 = new File(args[1]);
 
+		// copy(file1, file2);
+		// createTestFile();
+
 		long timetemp2 = System.nanoTime();
 		System.out.println(compare(file1, file2));
 		System.out.println(System.nanoTime() - timetemp2);
-
-		long timetemp = System.nanoTime();
-		System.out.println(compare2(file1, file2));
-		System.out.println(System.nanoTime() - timetemp);
+		//
+		// long timetemp = System.nanoTime();
+		// System.out.println(compare2(file1, file2));
+		// System.out.println(System.nanoTime() - timetemp);
 
 	}
 
@@ -80,17 +85,19 @@ public class Copy {
 			byte[] temp1 = new byte[1024];
 			byte[] temp2 = new byte[1024];
 
-			if (temp1.length != temp2.length) {
+			if (file1.length() != file2.length()) {
 
 				input1.close();
 				input2.close();
 				return false;
 			} else {
 
-				for (int j = 0; j <= (temp1.length / 1024); j++) {
+				for (int j = 0; j <= (file1.length() / 1024); j++) {
 					temp1 = new byte[1024];
 					temp2 = new byte[1024];
+					System.out.print("j:" + j);
 					for (int i = j; i < 1024; i++) {
+						System.out.println(" i:" + i);
 						temp1[i] = (byte) input1.read();
 						temp2[i] = (byte) input2.read();
 						if (temp1[i] == temp2[i]) {
@@ -158,4 +165,26 @@ public class Copy {
 		return true;
 
 	}
+
+	public static void createTestFile() {
+		BufferedWriter writer = null;
+		try {
+			writer = new BufferedWriter(new FileWriter("Testfile.dat"), 4096);
+			for (int i = 0; i < 1024 * 1024 * 1024; i++) {
+				writer.write((byte) (Math.random() * 128));
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					System.out.println("penis");
+				}
+			}
+		}
+	}
+
 }
