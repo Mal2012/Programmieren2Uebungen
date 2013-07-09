@@ -30,10 +30,10 @@ public class Artikelverwaltung {
 		BufferedWriter writer = null;
 		try {
 			writer = new BufferedWriter(new FileWriter(filename));
-			for (Artikel a : artikel) {
-				writer.write(a.toString());
-				writer.write(System.lineSeparator());
-			}
+
+			writer.write(this.toString());
+			writer.write(System.lineSeparator());
+
 		} catch (IOException e) {
 
 		} finally {
@@ -85,6 +85,13 @@ public class Artikelverwaltung {
 
 	@Override
 	public String toString() {
-		return null;
+
+		StringBuffer buffer = new StringBuffer();
+
+		for (int i = 0; i < this.artikel.size() - 1; i++)
+			buffer.append(this.artikel.toArray()[i]).append(',').append('\n');
+		buffer.append(this.artikel.getLast());
+
+		return buffer.toString();
 	}
 }
